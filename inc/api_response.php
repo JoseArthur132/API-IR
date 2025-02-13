@@ -2,7 +2,9 @@
 
 class Api_response
 {
+    //métodos disponíveis
     private $avaiable_methods;
+    //dados que serão mandados para o cliente
     private $data;
 
     function __construct()
@@ -11,11 +13,12 @@ class Api_response
         $this->data = [];
     }
 
+    //Resposta ao pedido do cliente
     public function send_response()
     {
-        //Response aos pedidos ao ser feita uma requisição para a api
+        //Cabeçalho da requisição
         header("Content-Type: application/json");
-
+        //retorna os dados 
         echo json_encode($this->data);
         die(1);
     }
@@ -31,14 +34,6 @@ class Api_response
         $this->send_response();
     }
 
-    public function send_api_status()
-    {
-        $this->data["status"] = "SUCCESS";
-        $this->data["message"] = "API is running OK!";
-
-        $this->send_response();
-    }
-
     public function set_method($method)
     {
         $this->data["method"] = $method;
@@ -49,15 +44,15 @@ class Api_response
         return $this->data["method"];
     }
 
+    //Checa se o metódo da requisição é valido dentro da API
     public function check_method($method)
     {
-        //Checa se o metódo da request é valido
+
         return in_array($method, $this->avaiable_methods);
     }
 
     public function set_endpoint($endpoint)
     {
-        //seta o endpoint da request
         $this->data["endpoint"] = $endpoint;
     }
 
@@ -65,7 +60,7 @@ class Api_response
     {
         return $this->data["endpoint"];
     }
-
+    //Adiciona um valor aos dados que serão enviados na requisição
     public function add_to_data($key, $value)
     {
         $this->data[$key] = $value;

@@ -2,7 +2,7 @@
 
 require_once(dirname(__FILE__) . "/inc/api_response.php");
 require_once(dirname(__FILE__) . "/inc/api_logic.php");
-
+//instância o objeto responsável por realizar as operações da API 
 $api_response = new Api_response();
 
 //Caso de request vir sem nenhum método

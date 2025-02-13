@@ -160,7 +160,8 @@ class Api_logic
 
     public function get_all_dispositivos()
     {
-        $sql = "SELECT * FROM dispositivos JOIN controladores;";
+        $sql = "SELECT * FROM dispositivos JOIN controladores ON dispositivos.controlador_responsavel = controladores.id_controlador;
+ ";
 
         $db = new Database();
 

@@ -2,7 +2,6 @@
 include_once("config.php");
 class Database
 {
-
     public function execute_query($query, $params = null, $close_connection = true)
     {
         //Responsável por executar consultas ao banco de dados (SELECT)
